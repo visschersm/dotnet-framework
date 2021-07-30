@@ -9,7 +9,7 @@ COPY UnitTestProject1/*.csproj ./tests/
 
 # copy everything else and build app
 COPY . .
-WORKDIR /app/dotnetapp
+WORKDIR /app/ConsoleApp1
 RUN dotnet build --no-restore
 
 
@@ -24,11 +24,11 @@ RUN dotnet test
 
 
 #FROM build AS publish
-#WORKDIR /app/dotnetapp
+#WORKDIR /app/ConsoleApp1
 #RUN dotnet publish -c Release -o out --no-restore
 #
 
 #FROM mcr.microsoft.com/dotnet/framework/runtime:4.8 AS runtime
 #WORKDIR /app
-#COPY --from=publish /app/dotnetapp/out ./
-#ENTRYPOINT ["dotnetapp.exe"]
+#COPY --from=publish /app/ConsoleApp1/out ./
+#ENTRYPOINT ["ConsoleApp1.exe"]
