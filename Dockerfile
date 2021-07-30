@@ -10,11 +10,6 @@ COPY MSUnitTestProject/*.csproj ./MSUnitTestProject/
 #COPY NUnitTestProject/*.csproj ./NUnitTestProject/
 RUN dotnet restore
 
-# copy everything else and build app
-COPY . .
-WORKDIR /app/ConsoleApp1
-RUN dotnet build --no-restore
-
 FROM build AS testrunner
 WORKDIR /app/MSUnitTestProject
 ENTRYPOINT ["dotnet", "test", "--logger:trx"]
