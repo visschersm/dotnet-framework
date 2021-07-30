@@ -4,22 +4,9 @@ FROM mcr.microsoft.com/dotnet/framework/sdk:4.8 AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY *.sln .
-COPY MSUnitTestProject/*.csproj ./MSUnitTestProject/
-#COPY XUnitTestProject/*.csproj ./XUnitTestProject/
-#COPY NUnitTestProject/*.csproj ./NUnitTestProject/
+COPY . .
 RUN dotnet restore
 
-FROM build AS testrunner
-WORKDIR /app/MSUnitTestProject
-ENTRYPOINT ["dotnet", "test", "--logger:trx"]
+RUN dotnet build
 
-FROM build AS test
-WORKDIR /app/MSUnitTestProject
 RUN dotnet test
-
-#WORKDIR /app/NUnitTestProject
-#RUN dotnet test
-#
-#WORKDIR /app/XUnitTestProject
-#RUN dotnet test
