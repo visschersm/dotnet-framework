@@ -2,10 +2,10 @@
 name: "Hello World"
 description: "Greet someone and record the time"
 inputs:
-  who-to-greet: # id of input
-    description: "Who to greet"
+  password: # id of input
+    description: "sa password for sql"
     required: true
-    default: "World"
+    default: "Y0uSh@llN0tP@ss"
 outputs:
   time: # id of output
     description: "The time we greeted you"
@@ -13,4 +13,4 @@ runs:
   using: "docker"
   image: "Dockerfile"
   args:
-    - ${{ inputs.who-to-greet }}
+    - ${{ inputs.password }}
