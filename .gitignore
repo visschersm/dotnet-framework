@@ -1,2 +1,7 @@
 /.vs
 /packages
+[Bb]in
+[Oo]bj
+
+.fake
+.ionide
