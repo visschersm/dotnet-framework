@@ -6,12 +6,11 @@ COPY *.sln .
 COPY ConsoleApp1/*.csproj ./dotnetapp/
 COPY ClassLibrary1/*.csproj ./utils/
 COPY UnitTestProject1/*.csproj ./tests/
-RUN dotnet restore
-#
-## copy everything else and build app
-#COPY . .
-#WORKDIR /app/dotnetapp
-#RUN dotnet build --no-restore
+
+# copy everything else and build app
+COPY . .
+WORKDIR /app/dotnetapp
+RUN dotnet build --no-restore
 #
 #
 #FROM build AS testrunner
