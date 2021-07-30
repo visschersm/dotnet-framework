@@ -3,7 +3,7 @@ WORKDIR /app
 
 # copy csproj and restore as distinct layers
 COPY *.sln .
-COPY ConsoleApp1/*.csproj ./dotnetapp/
+COPY ConsoleApp1/*.csproj ./ConsoleApp1/
 COPY ClassLibrary1/*.csproj ./utils/
 COPY UnitTestProject1/*.csproj ./tests/
 
@@ -15,6 +15,7 @@ RUN dotnet build --no-restore
 
 FROM build AS testrunner
 WORKDIR /app/tests
+RUN dotnet build --no-restore
 ENTRYPOINT ["dotnet", "test", "--logger:trx"]
 
 
